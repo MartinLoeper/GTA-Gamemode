@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="createjar" name="gamemode">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <path id="gamemode.classpath">
+        <pathelement location="lib/Shoebill.jar"/>
+        <pathelement location="lib/json-simple-1.1.1.jar"/>
+    </path>
+    <target name="createjar">
+        <javac srcdir="src" destdir=".">
+            <classpath>
+   			 <path refid="gamemode.classpath" />
+ 			</classpath>
+        </javac>
+    	<jar destfile="../../../../gta/server/gamemodes/gamemode.jar" basedir="." />
+    </target>  
+</project>

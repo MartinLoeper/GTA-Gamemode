@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="createjar" name="gamemode">
+	<?eclipse.ant.import?>
+	<project basedir="." default="createjar" name="gamemode">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <path id="gamemode.classpath">
-        <pathelement location="lib/Shoebill.jar"/>
+        <pathelement location="lib/Shoebill-2.jar"/>
+        <pathelement location="lib/shoebill-common-1.0.jar"/>
+        <pathelement location="lib/shoebill-utilities-1.0.jar"/>
+        <pathelement location="lib/util-event-1.0.jar"/>
+        <pathelement location="lib/shoebill-launcher-1.0.jar"/>
+        <pathelement location="lib/slf4j-api-1.7.7.jar"/>
+        <pathelement location="lib/commons-lang3-3.3.2.jar"/>
         <pathelement location="lib/json-simple-1.1.1.jar"/>
-    </path>
-    <target name="createjar">
-        <javac srcdir="src" destdir=".">
+    </path> 
+    <target name="createjar"> 
+       <exec executable="cmd">
+	     <arg value="/c"/>
+	     <arg value="call ../../../kill_samp_server.bat"/>
+	   </exec>
+	   <sleep milliseconds="1000"/>
+        <javac srcdir="src" destdir="." includeantruntime="false">
             <classpath>
    			 <path refid="gamemode.classpath" />
  			</classpath>
+ 			<src path="src"/>
         </javac>
-    	<jar destfile="../../../../gta/server/gamemodes/gamemode.jar" basedir="." />
+        <delete file="../../../../GTA_DEVELOPMENT/gta/server/shoebill/gamemodes/gamemode.jar"/>
+    	<jar destfile="../../../../GTA_DEVELOPMENT/gta/server/shoebill/gamemodes/gamemode.jar" basedir="." includes="**/*.class **/*.yml" excludes="**/*.java" update="true" />
     </target>  
 </project>

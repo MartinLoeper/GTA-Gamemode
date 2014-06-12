@@ -1,0 +1,7 @@
+class: com.samp.lvdm.LvdmGamemode
+name: Life Of California
+version: 1.0-SNAPSHOT
+buildNumber: ${build.number}
+buildDate: Unknown
+authors: JoJLlmAn, MK124
+description: Selfmade GTA Gamemode

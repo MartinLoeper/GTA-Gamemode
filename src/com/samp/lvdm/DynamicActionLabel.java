@@ -181,28 +181,33 @@ public class DynamicActionLabel extends Thread {
 	}
 	
 	private void checkItemDuration() {
-		Iterator<DynamicItem> it = items.iterator();
-		while(it.hasNext()) {
-			DynamicItem item = it.next();
-			if(!item.isActive()) {
-				//Server.get().sendMessageToAll(Color.RED, "Removing item based on timestamp!");
-				// custom hide animation
-				for(int i=0;i<=item.getText().length();i++) {
-					PlayerTextdraw newTextdraw = item.createTextDraw(item.getText().substring(0, item.getText().length()-i), 0, item.getYPosition());
-					item.hide();
-					item.setCurrentTextdraw(newTextdraw);
-					item.display();
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+		try {
+			Iterator<DynamicItem> it = items.iterator();
+			while(it.hasNext()) {
+				DynamicItem item = it.next();
+				if(!item.isActive()) {
+					//Server.get().sendMessageToAll(Color.RED, "Removing item based on timestamp!");
+					// custom hide animation
+					for(int i=0;i<=item.getText().length();i++) {
+						PlayerTextdraw newTextdraw = item.createTextDraw(item.getText().substring(0, item.getText().length()-i), 0, item.getYPosition());
+						item.hide();
+						item.setCurrentTextdraw(newTextdraw);
+						item.display();
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
+					
+					item.hide();	
+					it.remove();
 				}
-				
-				item.hide();
-				it.remove();
 			}
+		}
+		catch(Exception e) {
+			// TODO fix ConcurrentModificationException
 		}
 		
 		//remove if necessary
@@ -259,7 +264,7 @@ public class DynamicActionLabel extends Thread {
 	
 	
 	private void updateComboScore(Player pPlayer) {
-		if(mPoints == 0)
+		if(mPoints == 0 || items.size() <= 1)
 			return;
 		
 		String score = String.valueOf(mPoints);

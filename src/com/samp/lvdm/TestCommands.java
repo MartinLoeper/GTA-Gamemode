@@ -9,10 +9,27 @@ import net.gtaun.shoebill.object.Menu;
 import net.gtaun.shoebill.object.Player;
 
 public class TestCommands
-{
-	public TestCommands()
-	{
-
+{	
+	public TestCommands() {}
+	
+	@Command
+	public boolean doublekill(Player p) {
+		LvdmGamemode.queue.addPoints(p, "GEGNER ELIMINIERT", 100, DynamicActionLabel.DynamicItem.TYPE_BIG);
+		LvdmGamemode.queue.addPoints(p, "GEGNER ELIMINIERT", 100, DynamicActionLabel.DynamicItem.TYPE_BIG);
+		LvdmGamemode.queue.addPoints(p, "DOPPELTER KILL", 20, DynamicActionLabel.DynamicItem.TYPE_SMALL);
+		return true;
+	}
+	
+	@Command
+	public boolean shot2(Player p) {
+		LvdmGamemode.queue.addPoints(p, "REANIMATION", 100, DynamicActionLabel.DynamicItem.TYPE_BIG);
+		return true;
+	}
+	
+	@Command
+	public boolean shot3(Player p) {
+		LvdmGamemode.queue.addPoints(p, "HILFE BEI KILL", 58, DynamicActionLabel.DynamicItem.TYPE_SMALL);
+		return true;
 	}
 
 	@Command

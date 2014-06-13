@@ -34,11 +34,11 @@ public class LvdmGamemode extends Gamemode
 
 	private PlayerManager playerManager;
 	private Timer timer;
-
+	public static DynamicActionLabel queue = new DynamicActionLabel();
 
 	public LvdmGamemode()
 	{
-
+		queue.start();
 	}
 
 	@Override
@@ -47,7 +47,6 @@ public class LvdmGamemode extends Gamemode
 		logger = getLogger();
 
 		EventManager eventManager = getEventManager();
-		logger.info("Info: Before critical situation");
 		Server server = Server.get();
 		World world = World.get();
 

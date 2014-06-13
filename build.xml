@@ -25,7 +25,7 @@
  			</classpath>
  			<src path="src"/>
         </javac>
-        <delete file="../../../../GTA_DEVELOPMENT/gta/server/shoebill/gamemodes/gamemode.jar"/>
-    	<jar destfile="../../../../GTA_DEVELOPMENT/gta/server/shoebill/gamemodes/gamemode.jar" basedir="." includes="**/*.class **/*.yml" excludes="**/*.java" update="true" />
+        <delete file="../../../../gta/server/shoebill/gamemodes/gamemode.jar"/>
+    	<jar destfile="../../../../gta/server/shoebill/gamemodes/gamemode.jar" basedir="." includes="**/*.class **/*.yml" excludes="**/*.java" update="true" />
     </target>  
 </project>

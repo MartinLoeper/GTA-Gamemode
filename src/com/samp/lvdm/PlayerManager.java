@@ -105,6 +105,7 @@ public class PlayerManager
 		{
 			Player player = e.getPlayer();
 			player.sendGameText(5000, 5, "~w~SA-MP: ~r~Las Venturas ~g~MoneyGrub");
+			Player.sendMessageToAll(Color.GREEN,player.getName()+" Connected!");
 			player.sendMessage(Color.PURPLE, "Welcome to Las Venturas MoneyGrub, For help type /help.");
 
 			Player.sendDeathMessageToAll(player, null, WeaponModel.CONNECT);
@@ -117,6 +118,7 @@ public class PlayerManager
 		eventManagerNode.registerHandler(PlayerDisconnectEvent.class, (e) ->
 		{
 			Player player = e.getPlayer();
+			Player.sendMessageToAll(Color.RED,player.getName()+" Disconnected!");
 			Player.sendDeathMessageToAll(player, null, WeaponModel.DISCONNECT);
 		});
 
@@ -135,6 +137,9 @@ public class PlayerManager
 
 			Player.sendDeathMessageToAll(killer, player, e.getReason());
 			if (killer != null) killer.giveMoney(player.getMoney());
+			 
+			LvdmGamemode.queue.addPoints(killer, "GEGNER ELIMINIERT", 100, DynamicActionLabel.DynamicItem.TYPE_BIG);
+			
 
 			player.setMoney(0);
 		});
